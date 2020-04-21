@@ -1,21 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
+
+use App\Serie;
+use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-
     public function index() {
-        $series = [
-            'Grey\'s Anatomy',
-            'Lost',
-            'Agents of SHIELD'
-        ];
+        $series = Serie::all();
 
-        return view ('series.index', [
-            'series' => $series
-        ]);
-
-        // return view ('series.index', compact('series')); função do php que retorna chaves e variaveis com o mesmo nome
+        return view('series.index', compact('series'));
     }
 
     public function create()
@@ -23,4 +18,10 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
+    public function store(Request $request)
+    {
+        $serie = Serie::create($request->all());
+
+        echo "Série com id {$serie->id} criada: {$serie->nome}";
+    }
 }
