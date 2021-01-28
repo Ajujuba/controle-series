@@ -69,3 +69,8 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+Para Acessar o projeto: 
+
+rodar o comando "php -S localhost:8080 -t public" no mesmo local do arquivo e buscar por "localhost:8080/series" no navegador
