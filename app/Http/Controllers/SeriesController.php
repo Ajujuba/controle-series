@@ -67,4 +67,12 @@ class SeriesController extends Controller
         Repare que, como temos a variável $serie, antes de realizarmos a remoção, podemos pegar $nomeSerie = $serie->nome,
         passando esse nome para a mensagem que é exibida na tela.*/
     }
+
+    public function editaNome(int $id, Request $request)
+    {
+        $serie = Serie::find($id);
+        $novoNome = $request->nome;
+        $serie->nome = $novoNome;
+        $serie->save();
+    }
 }
