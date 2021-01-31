@@ -27,7 +27,7 @@ class CriadorDeSerie
 
     private function criaTemporadas(int $qtdTemporadas, int $epPorTemporada, Serie $serie)
     {
-        for ($i = 0; $i <= $qtdTemporadas; $i++) {
+        for ($i = 1; $i <= $qtdTemporadas; $i++) {
             $temporada = $serie->temporadas()->create(['numero' => $i]);
 
             $this->criaEpisodios($epPorTemporada, $temporada);
