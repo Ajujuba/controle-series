@@ -19,4 +19,11 @@ class Temporada extends Model
     {
         return $this->belongsTo(Serie::class); //aqui informa a relação de temporadas com uma serie (belongs to: pertence a)
     }
+
+    public function getEpisodiosAssistidos()
+    {
+        return $this->episodios->filter(function (Episodio $episodio) {
+            return $episodio->assistido;
+        } );
+    }
 }
