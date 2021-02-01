@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        /*Dessa forma, todos os métodos desse Controller terão que passar pelo middleware() 
+        que foi passado na instanciação.*/
+    }
+
     public function index(Request $request) {
         $series = serie::query()->orderBy('nome') ->get();
 
