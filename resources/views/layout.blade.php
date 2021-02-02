@@ -11,6 +11,14 @@
     
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 d-flex justify-content-between">
+        @auth
+            <a class="navbar navbar-expand-lg" href="{{ route('listar_series') }}">Home</a>
+            <a href="/sair" class="text-danger">Sair</a>
+        @endauth 
+        {{-- No código do video é feita uma logica pra mostrar os botões do menu, deixando "sair" pra quando está
+        logado, e "entrar" para quando está deslogado, eu optei por não mostrar nenhum botão na navbar com user deslogado --}}
+    </nav>
     <div class="container">
         <div class="jumbotron">
             <h1>@yield('cabecalho')</h1>
