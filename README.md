@@ -73,4 +73,4 @@ The Laravel framework is open-source software licensed under the [MIT license](h
 
 Para Acessar o projeto: 
 
-rodar o comando "php -S localhost:8080 -t public" no mesmo local do arquivo e buscar por "localhost:8080/series" no navegador
+rodar o comando "php -S localhost:8080 -t public" no mesmo local do arquivo e buscar por "localhost:8080/entrar" no navegador, crie um usuário e então será redirecionado para a página inicial do sistema.
