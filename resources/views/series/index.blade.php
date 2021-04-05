@@ -9,7 +9,16 @@ Séries
 @auth
 <a href="/series/criar" class="btn btn-dark mb-2">Adicionar</a>
 @endauth
-    <table class="table table-hover">
+    <div class="form-group input-group">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+            @csrf
+        </div>
+        <input name="txt_consulta" id="txt_consulta" placeholder="Pesquise o nome da série" type="text" class="form-control">
+    </div>     
+    <table id="tabela" class="table table-hover">
         <thead>
           <tr class="text-center">
            
@@ -30,36 +39,41 @@ Séries
                         </div>
                     </div>
 
-                <span class="d-flex">
-                    @auth
-                        <button class="btn btn-info btn-sm mr-1" onclick="toggleInput({{ $serie->id }})">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                    @endauth
-                    
-                    <a href="/series/{{ $serie->id }}/temporadas" class="btn btn-info btn-sm mr-1">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    @auth
-                        <form method="post" action="/series/remover/{{ $serie->id }}"
-                            onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($serie->nome) }}?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm">
-                                <i class="far fa-trash-alt"></i>
+                    <span class="d-flex">
+                        @auth
+                            <button class="btn btn-info btn-sm mr-1" onclick="toggleInput({{ $serie->id }})">
+                                <i class="fas fa-edit"></i>
                             </button>
-                        </form>
-                    @endauth
-                    
-                </span>
-            </li>
+                        @endauth
+                        
+                        <a href="/series/{{ $serie->id }}/temporadas" class="btn btn-info btn-sm mr-1">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        @auth
+                            <form method="post" action="/series/remover/{{ $serie->id }}"
+                                onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($serie->nome) }}?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        @endauth
+                        
+                    </span>
+                </li>
             @endforeach
         
         </tbody>
       </table>        
 </ul>
-
+<script src="jquery.js"></script>
+<script src="jquery.quicksearch.js"></script>
 <script>
+    $('input#txt_consulta').quicksearch('table tbody tr');
+</script> 
+<script>
+    
     function toggleInput(serieId) {
         const nomeSerieEl = document.getElementById(`nome-serie-${serieId}`);
         const inputSerieEl = document.getElementById(`input-nome-serie-${serieId}`);
